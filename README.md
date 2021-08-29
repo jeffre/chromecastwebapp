@@ -2,12 +2,13 @@
 The purpose of this repo is to better understand the requirements that a
 webapp must meet in order to connect to a Google Chromecast. Specifically, in
 regards to protocol (http/https), hostname/ip, network interface (loopback vs physical),  point of dns resolution (local, intranet, public).
-<br />
+
 <br />
 
 
 ## Build docker image
     make image
+
 <br />
 
 
@@ -34,13 +35,15 @@ protocol (http/https), network interface (loopback vs physical), hostname/ip, po
 | 9  | https://chromecastwebapp.jeffguymon.com/ | physical | intranet | 10.0.0.2 | Success |
 | 10 | https://chromecastwebapp.jeffguymon.com/ | physical | local    | 10.0.0.2 | Success |
 
+<br />
 
 ## Conclusion & Interpretation
 From the above tests, I find there are 3 permitted ways to access a webapp that will not inhibit casting:
   + **https://[Hostname]** - Standard deployment with a legitimate TLS certificate.
   + **http://[Loopback IP]** - Loopback IP can be anywhere within the 127.0.0.0/8 range
   + **http://localhost/** - Interestingly, if localhost locally resolves to a non-loopback ip it will still work.
-  
+
+<br />  
 
 ## Final Thoughts
 This repo on tested the most basic form of casting media. I believe there is 
